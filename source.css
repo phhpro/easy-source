@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+.src_out {
+    background-color: #000;
+    color: #0f0;
+    width: 100%;
+    padding: 4px;
+    font-family: monospace;
+    white-space: pre;
+}
+
+.src_ln {
+    background-color: inherit;
+    color: #ff0;
+    margin-right: 8px;
+}
+
+.src_tag {
+    background-color: inherit;
+    color: #0ff;
+}
+
+.src_att {
+    background-color: inherit;
+    color: #f0f;
+}
+
+.src_com {
+    background-color: inherit;
+    color: #999;
+}
+
+#src_by {
+    font-size: 85%;
+}
