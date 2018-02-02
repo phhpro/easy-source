@@ -4,4 +4,4 @@
 
 Edit `source.css` to your likes or just leave as is. You probably want to merge it with your existing style sheet.
 
-Follow this link to [try the demo](http://phclaus.com/demo/easy-source/).
+Follow this link to [try the demo](http://phclaus.com/easy-source/).
