@@ -2,8 +2,7 @@
 /**
  * PHP Version 5 and above
  *
- * Prints a source code view of the given input file
- * with basic syntax high-lightning.
+ * Render source view of given file with basic syntax high-lightning.
  *
  * @category  PHP_Editor_Scripts
  * @package   PHP_Easy_Source
@@ -31,7 +30,7 @@
 
 
 /**
- * Function src() renders source code view of given file
+ * Function src()
  *
  * @param string $src_file string input
  *
@@ -41,8 +40,7 @@
 function src($src_file) 
 {
     /**
-     * Document root
-     * Decimal
+     * Document root and decimal offset
      *
      * Full "path" without trailing / if SERVER has wrong value
      * %04d prints max 9999 lines, %05d max 99999, etc.
@@ -52,7 +50,7 @@ function src($src_file)
 
     //** Link source file and script version
     $src_file = $src_root . $src_file;
-    $src_make = 20180201;
+    $src_make = 20180324;
 
     //** Check if file exists
     if (file_exists($src_file)) {
@@ -91,15 +89,14 @@ function src($src_file)
         //** Print results
         echo "        <div class=src_out>";
 
-        //** Parse file and print lines
         foreach ($src_line as $src_span) {
             echo "<span class=src_ln>" .
                  sprintf($src_deci, $src_cntr++) .
                  "</span> $src_span\n";
         }
 
-        //** Clear span and print EOF flag
         unset($src_span);
+
         echo "EOF</div>\n";
     } else {
         echo "        <p>File $src_file does not exist!</p>";
