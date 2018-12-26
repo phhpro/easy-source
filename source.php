@@ -2,7 +2,7 @@
 /**
  * PHP Version 5 and above
  *
- * Render source view of given file with basic syntax high-lightning.
+ * Renders source view of given file with basic syntax high-lightning
  *
  * @category  PHP_Editor_Scripts
  * @package   PHP_Easy_Source
@@ -42,18 +42,26 @@ function src($src_file)
     /**
      * Document root and decimal offset
      *
-     * Full "path" without trailing / if SERVER has wrong value
+     * Full path without trailing / if env returns wrong value
      * %04d prints max 9999 lines, %05d max 99999, etc.
      */
     $src_root = $_SERVER['DOCUMENT_ROOT'];
     $src_deci = "%04d";
 
-    //** Link source file and script version
+
+    /**
+     ***************************************************************
+     * Unless you know what you're doing stop editing right here   *
+     ***************************************************************
+     */
+
+
+    //** Link source and script version
     $src_file = $src_root . $src_file;
-    $src_make = 20180324;
+    $src_make = 20181226;
 
     //** Check if file exists
-    if (file_exists($src_file)) {
+    if (is_file($src_file)) {
 
         //** Link data and filter entities
         $src_data = file_get_contents($src_file);
@@ -96,14 +104,13 @@ function src($src_file)
         }
 
         unset($src_span);
-
         echo "EOF</div>\n";
     } else {
         echo "        <p>File $src_file does not exist!</p>";
     }
 
     echo "        <div id=src_by>Powered by " .
-         '<a href="https://github.com/phhpro/easy-source" ' .
-         'title="Click here to get a free copy of this script">' .
+         "<a href=\"https://github.com/phhpro/easy-source\" " .
+         "title=\"Click here to get a free copy of this script\">" .
          "PHP Easy Source v$src_make</a></div>\n";
 }
