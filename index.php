@@ -4,17 +4,16 @@
  *
  * Demo index
  *
- * @category  PHP_Editor_Scripts
+ * @category  PHP_Editor
  * @package   PHP_Easy_Source
  * @author    P H Claus <phhpro@gmail.com>
- * @copyright 2016 - 2018 P H Claus
+ * @copyright 2016 - 2019 P H Claus
  * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GPLv3
  * @version   GIT: Latest
  * @link      https://github.com/phhpro/easy-source
  */
 
 
-//** Load script
 require "./source.php";
 ?>
 <!DOCTYPE html>
@@ -25,7 +24,7 @@ require "./source.php";
     </head>
     <body>
         <h1>PHP Easy Source Demo</h1>
-        <p>Render source view of given file.</p>
+        <p>Renders source view of given file with basic syntax high-lightning.</p>
         <p><code>source.php</code> -- the main script</p>
 <?php src('/easy-source/source.php'); ?>
         <p><code>index.php</code> -- this file</p>

@@ -4,29 +4,30 @@
     background-color: #000;
     color: #0f0;
     width: 100%;
-    padding: 4px;
     font-family: monospace;
     white-space: pre-wrap;
+    margin: 0;
+    padding: 4px;
 }
 
-.src_ln {
-    background-color: inherit;
-    color: #ff0;
+.src_lc {
+    background-color: #000;
+    color: #090;
     margin-right: 8px;
 }
 
 .src_tag {
-    background-color: inherit;
+    background-color: transparent;
     color: #0ff;
 }
 
 .src_att {
-    background-color: inherit;
-    color: #f0f;
+    background-color: transparent;
+    color: #ff0;
 }
 
 .src_com {
-    background-color: inherit;
+    background-color: transparent;
     color: #999;
 }
 

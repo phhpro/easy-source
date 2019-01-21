@@ -4,10 +4,10 @@
  *
  * Renders source view of given file with basic syntax high-lightning
  *
- * @category  PHP_Editor_Scripts
+ * @category  PHP_Editor
  * @package   PHP_Easy_Source
  * @author    P H Claus <phhpro@gmail.com>
- * @copyright 2016 - 2018 P H Claus
+ * @copyright 2016 - 2019 P H Claus
  * @license   https://www.gnu.org/licenses/gpl-3.0.en.html GPLv3
  * @version   GIT: Latest
  * @link      https://github.com/phhpro/easy-source
@@ -42,63 +42,55 @@ function src($src_file)
     /**
      * Document root and decimal offset
      *
-     * Full path without trailing / if env returns wrong value
+     * Full path without trailing / if SERVER has wrong value
      * %04d prints max 9999 lines, %05d max 99999, etc.
      */
     $src_root = $_SERVER['DOCUMENT_ROOT'];
     $src_deci = "%04d";
 
-
-    /**
-     ***************************************************************
-     * Unless you know what you're doing stop editing right here   *
-     ***************************************************************
-     */
-
-
     //** Link source and script version
     $src_file = $src_root . $src_file;
-    $src_make = 20181226;
+    $src_make = 20190121;
 
-    //** Check if file exists
+    //** Check file
     if (is_file($src_file)) {
-
-        //** Link data and filter entities
         $src_data = file_get_contents($src_file);
+
+        //** Entity, quote
         $src_data = htmlentities($src_data);
         $src_data = str_replace('"', '&quot;', $src_data);
 
-        //** Filter tags
+        //** Tag
         $src_data = preg_replace(
             "/&lt;(.+?)&gt;/",
             "<span class=src_tag>$0</span>", $src_data
         );
 
-        //** Filter attributes
+        //** Attrib
         $src_data = preg_replace(
             "/&quot;(.+?)&quot;/",
             "<span class=src_att>$0</span>", $src_data
         );
+
         $src_data = preg_replace(
             "/'(.+?)'/",
             "<span class=src_att>$0</span>", $src_data
         );
 
-        //** Filter comments
+        //** Comment
         $src_data = preg_replace(
             "~(?:#|//)[^\r\n]*|/\*.*?\*/~s",
             "<span class=src_com>$0</span>", $src_data
         );
 
-        //** Init line counter
+        //** Line counter
         $src_line = explode("\n", $src_data);
         $src_cntr = 1;
 
-        //** Print results
         echo "        <div class=src_out>";
 
         foreach ($src_line as $src_span) {
-            echo "<span class=src_ln>" .
+            echo "<span class=src_lc>" .
                  sprintf($src_deci, $src_cntr++) .
                  "</span> $src_span\n";
         }
